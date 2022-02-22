@@ -5,6 +5,7 @@ import { GameStats } from '../../lib/localStorage'
 import { shareStatus } from '../../lib/share'
 import { tomorrow } from '../../lib/words'
 import { BaseModal } from './BaseModal'
+import { key } from '../../constants/key'
 import {
   STATISTICS_TITLE,
   GUESS_DISTRIBUTION_TEXT,
@@ -37,6 +38,7 @@ export const StatsModal = ({
   isDarkMode,
   isHighContrastMode,
 }: Props) => {
+  const lastGuess = guesses[guesses.length - 1]
   if (gameStats.totalGames <= 0) {
     return (
       <BaseModal
@@ -54,6 +56,11 @@ export const StatsModal = ({
       isOpen={isOpen}
       handleClose={handleClose}
     >
+      {(isGameLost || isGameWon) && (
+        <p className="mt-6 italic text-md text-gray-500 dark:text-gray-300">
+          Today's answer is the {key[lastGuess]} ({lastGuess})
+        </p>
+      )}
       <StatBar gameStats={gameStats} />
       <h4 className="text-lg leading-6 font-medium text-gray-900 dark:text-gray-100">
         {GUESS_DISTRIBUTION_TEXT}
