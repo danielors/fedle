@@ -5,10 +5,7 @@ import { getGuessStatuses } from './statuses'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 
 export const isWordInWordList = (word: string) => {
-  return (
-    WORDS.includes(localeAwareLowerCase(word)) ||
-    VALID_GUESSES.includes(localeAwareLowerCase(word))
-  )
+  return WORDS.includes(word) || VALID_GUESSES.includes(word)
 }
 
 export const isWinningWord = (word: string) => {
@@ -81,7 +78,7 @@ export const getWordOfDay = () => {
   const nextday = (index + 1) * msInDay + epochMs
 
   return {
-    solution: localeAwareUpperCase(WORDS[index % WORDS.length]),
+    solution: WORDS[index % WORDS.length],
     solutionIndex: index,
     tomorrow: nextday,
   }

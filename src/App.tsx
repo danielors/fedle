@@ -245,7 +245,7 @@ function App() {
     }
   }
 
-  console.debug('solution:', solution)
+  // console.debug('solution:', solution)
 
   return (
     <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
